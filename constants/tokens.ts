@@ -8,6 +8,17 @@ export const global = {
       carmim_700: "oklch(0.533 0.198 19.6)" /* #C51E3A - Active / Pressed */,
     },
 
+    neutral: {
+      100: "#F3F4F6",
+      200: "#E5E7EB",
+      300: "#D1D5DB",
+      400: "#9CA3AF",
+      500: "#6B7280",
+      600: "#4B5563",
+      700: "#374151",
+      //800: "#1F2937",
+      //900: "#111827",
+    },
     black: {
       100: "#e6e6e6" /* Útil para backgrounds de superfícies claras */,
       200: "#cccccc" /* Ideal para borders e divisores */,
@@ -33,13 +44,13 @@ export const global = {
     green: {
       100: "#E0FFE9",
       200: "#A3FFC8",
-      300: "#3FFFA3", // Cor Base
+      300: "#3FFFA3",
       400: "#00E676",
       500: "#00C853",
       600: "#009624",
-      700: "#00701A",
-      800: "#004D12",
-      900: "#00290A",
+      //700: "#00701A",
+      //800: "#004D12",
+      //900: "#00290A",
     },
     red: {
       100: "#FFE5E7", // Fundo de alertas de erro sutis
@@ -47,21 +58,27 @@ export const global = {
       300: "#FF9FA5", // Ícones desabilitados em temas de erro
       400: "#FF757E", // Hover em botões secundários destrutivos
       500: "#FF3F4B", // Cor Base (Ações destrutivas principais)
-      600: "#E62E3B", // Hover em botões primários destrutivos
-      700: "#BF222D", // Textos de erro em fundos claros
-      800: "#991721", // Elementos ativos/pressionados
-      900: "#730E16", // Contraste máximo em Dark Mode
+      //600: "#E62E3B", // Hover em botões primários destrutivos
+      //700: "#BF222D", // Textos de erro em fundos claros
+      //800: "#991721", // Elementos ativos/pressionados
+      //900: "#730E16", // Contraste máximo em Dark Mode
     },
-    gray: {
-      100: "#F3F4F6",
-      200: "#E5E7EB",
-      300: "#D1D5DB",
-      400: "#9CA3AF",
-      500: "#6B7280", // Cor Base
-      600: "#4B5563",
-      700: "#374151",
-      800: "#1F2937",
-      900: "#111827",
+    orange: {
+      100: "#fef2de",
+      200: "#f7c77a",
+      300: "#c87b00",
+      400: "#935b00",
+      500: "#744700",
+      600: "#533300",
+    },
+    blue: {
+      100: "#eef5ff",
+      200: "#96c1fc",
+      300: "#0059d5",
+      400: "#00429f",
+      500: "#00347d",
+      600: "#00255a",
+      700: "#000b19",
     },
     border: {
       white: {
@@ -88,37 +105,42 @@ export const global = {
       },
     },
   },
-
-  /* Standard Size Scale (Based on 4px/8px Grid) */
-  space: {
-    0: "0px",
-    1: "4px",
-    2: "8px",
-    3: "16px",
-    4: "24px",
-    5: "32px",
-    6: "40px",
-    7: "48px",
-  },
-  radius: {
-    1: "4px",
-    2: "8px",
-    3: "16px",
-    4: "24px",
-    5: "32px",
-    6: "40px",
-    7: "48px",
-  },
-  scale: {
-    1: "4px",
-    2: "8px",
-    3: "12px",
-    4: "16px",
-    5: "24px",
-    6: "32px",
-    7: "40px",
-    8: "48px",
-  },
 } as const;
 
 // export type ThemeColors = typeof global.colors;
+
+export const spaces = {
+  xs: 4,
+  sm: 8,
+  md: 16,
+  lg: 24,
+  xl: 32,
+  xxl: 40,
+};
+
+export const radius = {
+  xs: 4,
+  sm: 8,
+  md: 16,
+  lg: 24,
+  xl: 32,
+  xxl: 40,
+};
+
+export const size = {
+  xs: 10,
+  sm: 12,
+  md: 14,
+  lg: 16,
+  xl: 20,
+  xxl: 24,
+};
+
+export const weight = {
+  xs: 400,
+  sm: 500,
+  md: 600,
+  lg: 700,
+  xl: 800,
+  xxl: 900,
+};

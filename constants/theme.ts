@@ -1,63 +1,127 @@
-import { global } from "@/constants/tokens";
+import { global, radius, size, spaces, weight } from "@/constants/tokens";
 
 export const theme = {
   dark: {
-    background: global.colors.black[800],
-    surface: global.colors.black[700],
-    primary: global.colors.black[900],
-    secondary: global.colors.black[900],
-    text: global.colors.black[900],
-    border: global.colors.gray[300],
-    error: global.colors.red[700],
+    background: global.colors.black[800], // Cor de fundo principal das telas
+    surface: {
+      default: global.colors.black[800],
+      primary: global.colors.black[700],
+      secondary: global.colors.black[600],
+      terciary: global.colors.black[500],
+    }, // Fundo para elementos
+    card: global.colors.black[700], // Fundo p/ cartões e Modais
+    button: {
+      default: global.colors.black[100],
+      primary: global.colors.black[200],
+      secondary: global.colors.black[300],
+      terciary: global.colors.black[400],
+    },
+    text: {
+      default: global.colors.black[100],
+      primary: global.colors.black[200],
+      secondary: global.colors.black[300],
+      terciary: global.colors.black[400],
+    },
+    subtext: {
+      default: global.colors.black[200],
+      primary: global.colors.black[300],
+      secondary: global.colors.black[400],
+      terciary: global.colors.black[500],
+    },
+    border: {
+      default: global.colors.black[200],
+      primary: global.colors.black[300],
+      secondary: global.colors.black[400],
+      terciary: global.colors.black[500],
+    },
+    feedback: {
+      error: global.colors.red[200],
+      success: global.colors.green[200],
+      warning: global.colors.orange[200],
+      info: global.colors.blue[200],
+    },
   },
 
   light: {
-    background: global.colors.white[200],
-    surface: global.colors.black[900],
-    primary: global.colors.black[900],
-    secondary: global.colors.black[900],
-    text: global.colors.black[900],
-    border: global.colors.gray[300],
-    error: global.colors.red[400],
+    background: global.colors.white[100], // Cor de fundo principal das telas
+    surface: {
+      default: global.colors.white[200],
+      primary: global.colors.white[300],
+      secondary: global.colors.white[400],
+      terciary: global.colors.white[500],
+    }, // Fundo para elementos
+    card: global.colors.white[300], // Fundo p/ cartões e Modais
+    button: {
+      default: global.colors.white[300],
+      primary: global.colors.white[400],
+      secondary: global.colors.white[500],
+      terciary: global.colors.white[600],
+    },
+    text: {
+      main: global.colors.white[100],
+      default: global.colors.white[200],
+      primary: global.colors.white[300],
+      secondary: global.colors.white[400],
+      terciary: global.colors.white[500],
+    },
+    border: {
+      default: global.colors.white[200],
+      primary: global.colors.white[300],
+      secondary: global.colors.white[400],
+      terciary: global.colors.white[500],
+    },
+    feedback: {
+      error: global.colors.red[200],
+      success: global.colors.green[200],
+      warning: global.colors.orange[200],
+      info: global.colors.blue[200],
+    },
   },
 
   // Elementos globais compartilhados por ambos os temas
   spacing: {
-    xs: global.space[1],
-    sm: global.space[2],
-    md: global.space[3],
-    lg: global.space[4],
-    xl: global.space[5],
-    xl2: global.space[6],
-    xl3: global.space[7],
+    xs: spaces.xs,
+    sm: spaces.sm,
+    md: spaces.md,
+    lg: spaces.lg,
+    xl: spaces.xl,
+    xxl: spaces.xxl,
   },
 
-  radius: {
-    xs: global.radius[1],
-    sm: global.radius[2],
-    md: global.radius[3],
-    lg: global.radius[4],
-    xl: global.radius[5],
-    xl2: global.radius[6],
-    xl3: global.radius[7],
+  rounded: {
+    xs: radius.xs,
+    sm: radius.sm,
+    md: radius.md,
+    lg: radius.lg,
+    xl: radius.xl,
+    xxl: radius.xxl,
+  },
+
+  size: {
+    xs: size.xs,
+    sm: size.sm,
+    md: size.md,
+    lg: size.lg,
+    xl: size.xl,
+    xxl: size.xxl,
   },
 
   font: {
     size: {
-      xs: global.scale[1],
-      sm: global.radius[2],
-      md: global.radius[3],
-      lg: global.radius[4],
-      xl: global.radius[5],
-      xl2: global.radius[6],
-      xl3: global.radius[7],
+      xs: radius.xs,
+      sm: radius.sm,
+      md: radius.md,
+      lg: radius.lg,
+      xl: radius.xl,
+      xxl: radius.xxl,
     },
     weight: {
-      regular: 400,
-      medium: 500,
-      semibold: 600,
-      bold: 700,
-      extrabold: 800,
+      light: weight.xs,
+      regular: weight.sm,
+      medium: weight.md,
+      semibold: weight.lg,
+      bold: weight.xl,
+      extrabold: weight.xxl,
     },
   },
 };
