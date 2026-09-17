@@ -1,6 +1,7 @@
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { theme } from "@/constants/theme";
+import { useState } from "react";
 
 import {
   KeyboardAvoidingView,
@@ -11,7 +12,15 @@ import {
   View,
 } from "react-native";
 
-export default function Index() {
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  function handleBtnLogin() {
+    console.log({ email, password });
+  }
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -21,25 +30,37 @@ export default function Index() {
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
       >
-        {/* LOGOTIPO */}
-        <View style={styles.content}>
+        <View style={styles.section}>
+          {/* LOGOTIPO */}
           <Text style={styles.logotipo}>RANGUEI</Text>
-        </View>
 
-        {/* FORM > Inputs */}
-        <View style={styles.form}>
-          <Input
-            label="Email"
-            placeholder="Digite seu email..."
-            placeholderTextColor={theme.dark.text.terciary}
+          {/* FORM > Inputs */}
+          <View style={styles.form}>
+            <Input
+              label="Email"
+              placeholder="Digite seu email..."
+              placeholderTextColor={theme.dark.text.terciary}
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+            />
+            <Input
+              label="Senha"
+              placeholder="Digite sua senha..."
+              placeholderTextColor={theme.dark.text.terciary}
+              secureTextEntry={true}
+              value={password}
+              onChangeText={setPassword}
+              keyboardType="visible-password"
+            />
+          </View>
+          {/* BUTTON */}
+          <Button
+            title="Entrar agora"
+            variant="gradient"
+            loading={false}
+            onPress={handleBtnLogin}
           />
-          <Input
-            label="Senha"
-            placeholder="Digite sua senha..."
-            placeholderTextColor={theme.dark.text.terciary}
-            secureTextEntry={true}
-          />
-          <Button title="Entrar agora" />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -49,8 +70,8 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    gap: theme.spacing.xl,
     width: "100%",
+    height: "auto",
     backgroundColor: theme.dark.background,
   },
   scrollContent: {
@@ -58,12 +79,15 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingHorizontal: theme.spacing.xl,
   },
-  content: {
+  section: {
+    flexDirection: "column",
+    gap: theme.spacing.xl,
     alignItems: "center",
     marginBottom: theme.spacing.xl,
   },
   logotipo: {
     color: theme.dark.text.default,
+    fontSize: 40,
   },
   form: {
     width: "100%",

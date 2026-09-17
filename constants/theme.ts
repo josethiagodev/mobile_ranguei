@@ -11,6 +11,14 @@ export const theme = {
     }, // Fundo para elementos
     card: global.colors.black[700], // Fundo p/ cartões e Modais
     button: {
+      gradient: {
+        default: global.colors.black[100],
+        primary: global.colors.black[100],
+        secondary: global.colors.black[100],
+        terciary: global.colors.black[100],
+        outline: global.colors.black[100],
+        inverse: global.colors.white[100],
+      },
       default: global.colors.black[100],
       primary: global.colors.black[200],
       secondary: global.colors.black[300],
@@ -21,6 +29,7 @@ export const theme = {
       primary: global.colors.black[200],
       secondary: global.colors.black[300],
       terciary: global.colors.black[400],
+      inverse: global.colors.white[100],
     },
     subtext: {
       default: global.colors.black[200],
@@ -56,6 +65,7 @@ export const theme = {
       primary: global.colors.white[400],
       secondary: global.colors.white[500],
       terciary: global.colors.white[600],
+      inverse: global.colors.black[900],
     },
     text: {
       main: global.colors.white[100],
@@ -63,6 +73,7 @@ export const theme = {
       primary: global.colors.white[300],
       secondary: global.colors.white[400],
       terciary: global.colors.white[500],
+      inverse: global.colors.black[900],
     },
     border: {
       default: global.colors.white[200],
@@ -95,6 +106,7 @@ export const theme = {
     lg: radius.lg,
     xl: radius.xl,
     xxl: radius.xxl,
+    full: radius.full,
   },
 
   size: {
@@ -108,12 +120,12 @@ export const theme = {
 
   font: {
     size: {
-      xs: radius.xs,
-      sm: radius.sm,
-      md: radius.md,
-      lg: radius.lg,
-      xl: radius.xl,
-      xxl: radius.xxl,
+      xs: size.xs,
+      sm: size.sm,
+      md: size.md,
+      lg: size.lg,
+      xl: size.xl,
+      xxl: size.xxl,
     },
     weight: {
       light: weight.xs,
@@ -124,4 +136,12 @@ export const theme = {
       extrabold: weight.xxl,
     },
   },
+};
+
+export const gradient = {
+  brand: {
+    left: [global.colors.brand.rose, global.colors.brand.coral] as const,
+    right: [global.colors.brand.coral, global.colors.brand.rose] as const,
+  },
+  // imageOverlay: ["rgba(0,0,0,0.72)", "rgba(0,0,0,0.12)"] as const,
 };

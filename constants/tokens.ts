@@ -3,6 +3,7 @@ export const global = {
     brand: {
       coral: "#FF6666" /* oklch(0.704 0.187 23.2) - Coral suave */,
       rose: "#FB607F" /* oklch(0.696 0.19 11.4) - Rosa vivo */,
+
       carmim_500: "oklch(0.581 0.207 20.3)" /* #DA2C43 - Base Primary */,
       carmim_600: "oklch(0.571 0.222 20.1)" /* #DC143C - Hover Vibrante */,
       carmim_700: "oklch(0.533 0.198 19.6)" /* #C51E3A - Active / Pressed */,
@@ -125,6 +126,7 @@ export const radius = {
   lg: 24,
   xl: 32,
   xxl: 40,
+  full: "100%",
 };
 
 export const size = {
