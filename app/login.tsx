@@ -3,9 +3,11 @@ import { Input } from "@/components/Input";
 import { theme } from "@/constants/theme";
 import { useState } from "react";
 
+import { useAuth } from "@/context-api/AuthContext";
+
 import {
+  Alert,
   KeyboardAvoidingView,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -16,15 +18,29 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const { signIn } = useAuth();
 
-  function handleBtnLogin() {
-    console.log({ email, password });
+  async function handleLogin() {
+    if (!email.trim() || !password.trim()) {
+      Alert.alert("Atenção", "Preencha todos os campos!");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      await signIn(email, password);
+    } catch (err) {
+      console.log(err);
+      Alert.alert("Atenção", "Preencha todos os campos!");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : undefined} // padding no IOS
+      behavior={"padding"} // padding no IOS
     >
       <ScrollView
         contentContainerStyle={styles.scrollContent}
@@ -58,8 +74,8 @@ export default function Login() {
           <Button
             title="Entrar agora"
             variant="gradient"
-            loading={false}
-            onPress={handleBtnLogin}
+            loading={loading}
+            onPress={handleLogin}
           />
         </View>
       </ScrollView>

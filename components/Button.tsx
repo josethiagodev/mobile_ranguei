@@ -53,20 +53,20 @@ export function Button({
 const styles = StyleSheet.create({
   btnGradient: {
     width: "100%",
-    height: 70,
+    height: 65,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: theme.rounded.xxl,
   },
   btn: {
     width: "100%",
-    height: 70,
+    height: 65,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: theme.rounded.xxl,
   },
   btnDisabled: {
-    opacity: 0.7,
+    opacity: 0.65,
   },
   title: {
     color: theme.dark.text.inverse,
