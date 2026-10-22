@@ -1,6 +1,7 @@
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { theme } from "@/constants/theme";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 
 import { useAuth } from "@/context-api/AuthContext";
@@ -20,6 +21,8 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const { signIn } = useAuth();
 
+  const router = useRouter();
+
   async function handleLogin() {
     if (!email.trim() || !password.trim()) {
       Alert.alert("Atenção", "Preencha todos os campos!");
@@ -28,10 +31,13 @@ export default function Login() {
 
     try {
       setLoading(true);
+
       await signIn(email, password);
+
+      router.replace("/(authenticated)/dashboard");
     } catch (err) {
       console.log(err);
-      Alert.alert("Atenção", "Preencha todos os campos!");
+      Alert.alert("Erro", "Erro ao fazer login!");
     } finally {
       setLoading(false);
     }
