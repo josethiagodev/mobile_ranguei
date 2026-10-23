@@ -16,7 +16,7 @@ api.interceptors.request.use(
   async (config) => {
     const token = await AsyncStorage.getItem("@token:ranguei");
 
-    if (!token) {
+    if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
 
@@ -33,9 +33,10 @@ api.interceptors.response.use(
   async (error) => {
     if (error.response?.status === 401) {
       await AsyncStorage.removeItem("@token:ranguei");
-
-      return Promise.reject(error);
+      await AsyncStorage.removeItem("@user:ranguei");
     }
+
+    return Promise.reject(error);
   },
 );
 

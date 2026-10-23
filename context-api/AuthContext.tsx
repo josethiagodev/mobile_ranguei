@@ -1,6 +1,6 @@
 import api from "@/services/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 import { LoginResponse, User } from "@/types/index";
 interface AuthProviderProps {
@@ -12,15 +12,40 @@ interface AuthContextData {
   signed: boolean; // true (logado) / false (deslogado)
   loading: boolean; // true (carregando) / false (não carregado)
   signIn: (email: string, password: string) => Promise<void>;
+  signOut: () => Promise<void>;
 }
 
 const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [signed, setSigned] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
 
+  useEffect(() => {
+    async function loadData() {
+      await loadStorageData();
+    }
+    loadData();
+  }, []);
+
+  async function loadStorageData() {
+    try {
+      setLoading(true);
+
+      const storedToken = await AsyncStorage.getItem("@token:ranguei");
+      const storedUser = await AsyncStorage.getItem("@user:ranguei");
+
+      if (storedToken && storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  // LOGAR USUÁRIO
   async function signIn(email: string, password: string) {
     try {
       const response = await api.post<LoginResponse>("/session", {
@@ -38,21 +63,24 @@ export function AuthProvider({ children }: AuthProviderProps) {
       // Passando dados do usuário para o novo valor do estado (setUser)
       setUser(userData);
     } catch (error: any) {
-      if (error.response?.data?.error) {
-        console.log(error.response?.data?.error);
-        return;
-      }
-      console.log(error);
+      throw new error();
     }
+  }
+
+  // DESLOGAR USUÁRIO
+  async function signOut() {
+    await AsyncStorage.multiRemove(["@token:ranguei", "@user:ranguei"]);
+    setUser(null);
   }
 
   return (
     <AuthContext
       value={{
-        signed,
+        signed: !!user,
         loading,
         signIn,
         user,
+        signOut,
       }}
     >
       {children}

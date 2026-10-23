@@ -36,7 +36,6 @@ export default function Login() {
 
       router.replace("/(authenticated)/dashboard");
     } catch (err) {
-      console.log(err);
       Alert.alert("Erro", "Erro ao fazer login!");
     } finally {
       setLoading(false);
